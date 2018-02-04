@@ -1,0 +1,29 @@
+{
+  "name": "JS-Sudoku",
+  "version": "1.0.0",
+  "description": "JS数独游戏",
+  "main": "index.js",
+  "scripts": {
+    "basic": "cd basic && gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samhanx/JS-Sudoku.git"
+  },
+  "keywords": [],
+  "author": "Hanx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Samhanx/JS-Sudoku/issues"
+  },
+  "homepage": "https://github.com/Samhanx/JS-Sudoku#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-util": "^3.0.8",
+    "webpack-stream": "^4.0.0"
+  }
+}
