@@ -16,4 +16,11 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('./dist/css'))
 })
 
-gulp.task('default', ['webpack', 'sass'])
+gulp.task('html', () => {
+  const html = require('gulp-htmlmin')
+  gulp.src('./src/*.html')
+    .pipe(html({collapseWhitespace: true}))
+    .pipe(gulp.dest('./dist'))
+})
+
+gulp.task('default', ['webpack', 'sass', 'html'])
