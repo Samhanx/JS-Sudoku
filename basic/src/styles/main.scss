@@ -1,3 +1,55 @@
-h1 {
-  font-weight: normal;
+html {
+  font-size: 14px;
+}
+body {
+  margin: 0;
+  background: #eee;
+  font-family: 'Consolas', '微软雅黑';
+  user-select: none;
+}
+.app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.hidden {
+  display: none;
+}
+
+.header {
+  height: 4rem;
+  padding-left: 1rem;
+  background: turquoise;
+  box-shadow: 0 0.2rem 0.3rem rgba(48, 48, 48, 0.2);
+  line-height: 4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #eee;
+}
+
+.dashboard {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -0.1rem 0.2rem rgba(48, 48, 48, 0.2);
+  font-size: 0px;
+  .dashboard-btn {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 25%;
+    padding: 1rem;
+    background: turquoise;
+    border-right: 1px solid #eee;
+    outline: none;
+    font-size: 1.2rem;
+    &:last-of-type {
+      border-right: none;
+    }
+    &:active {
+      border-left: none;
+      border-top: none;
+    }
+  }
 }
