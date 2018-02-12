@@ -20,6 +20,7 @@ body {
 
 .header {
   height: 4rem;
+  margin-bottom: 3rem;
   padding-left: 1rem;
   background: turquoise;
   box-shadow: 0 0.2rem 0.3rem rgba(48, 48, 48, 0.2);
@@ -27,6 +28,48 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   color: #eee;
+}
+
+.container {
+  padding-left: 5%;
+  .row {
+    > span {
+      display: inline-block;
+      width: 10%;
+      height: 24px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-right-width: 0;
+      border-bottom-width: 0;
+      line-height: 24px;
+      text-align: center;
+      cursor: pointer;
+      &.col-group-right {
+        border-right-width: 1px;
+      }
+      &:first-child {
+        border-left-width: 2px;
+      }
+      &:last-child {
+        border-right-width: 2px;
+      }
+    }
+    &.row-group-bottom {
+      > span {
+        border-bottom-width: 1px;
+      }
+    }
+    &:first-child {
+      > span {
+        border-top-width: 2px;
+      }
+    }
+    &:last-child {
+      > span {
+        border-bottom-width: 2px;
+      }
+    }
+  }
 }
 
 .dashboard {
@@ -44,7 +87,8 @@ body {
     border-right: 1px solid #eee;
     outline: none;
     font-size: 1.2rem;
-    &:last-of-type {
+    color: #eee;
+    &:last-child {
       border-right: none;
     }
     &:active {

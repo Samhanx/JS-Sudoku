@@ -2,12 +2,6 @@ import util from './util'
 
 const l = console.log.bind(console)
 
-// l(util.createMatrix(0))
-
-// let arr = Array.from({length: 9}, (v, i) => i + 1)
-// l(arr)
-// l(util.shuffle(arr))
-
 class Grid {
   constructor(container) {
     this.$container = container
@@ -15,20 +9,31 @@ class Grid {
 
   build() {
     const matrix = util.createMatrix()
+    const rowGroupClasses = ['row-group-top', 'row-group-middle', 'row-group-bottom']
+    const colGroupClasses = ['col-group-left', 'col-group-center', 'col-group-right']
     
-    const $cells = matrix.map(rowArrays => rowArrays.map(cellVal => {
-      return $(`<span>${cellVal}</span>`)
-      // return $('<span>').text(cellVal)
+    const $cells = matrix.map(rowArrays => rowArrays.map((cellVal, i) => {
+      return $('<span>').addClass(colGroupClasses[i % 3]).text(cellVal)
     }))
 
-    const $divArr = $cells.map($spanArr => {
-      return $('<div>').append($spanArr)
+    const $divArr = $cells.map(($spanArr, i) => {
+      return $('<div class="row">').addClass(rowGroupClasses[i % 3]).append($spanArr)
     })
 
     this.$container.append($divArr)
   }
 
-
+  layout() {
+    const width = $('span:first', this.$container).width()
+    $('span', this.$container)
+      .height(width)
+      .css({
+        'line-height': `${width}px`,
+        'font-size': width > 32 ? `${width / 2}px` : ''
+      })
+  }
 }
 
-new Grid($('#container')).build()
+const grid = new Grid($('#container'))
+grid.build()
+grid.layout()
