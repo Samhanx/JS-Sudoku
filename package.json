@@ -4,7 +4,8 @@
   "description": "JS数独游戏",
   "main": "index.js",
   "scripts": {
-    "basic": "cd basic && gulp"
+    "basic": "cd basic && gulp",
+    "basic-watch": "cd basic && gulp watch"
   },
   "repository": {
     "type": "git",
