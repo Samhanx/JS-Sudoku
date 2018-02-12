@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   entry: {
     app: './src/scripts/index'
@@ -22,5 +24,11 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      // jQuery: 'jquery'
+    })
+  ]
 }
