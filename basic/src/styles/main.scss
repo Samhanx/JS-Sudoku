@@ -13,6 +13,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: hidden;
 }
 .hidden {
   display: none;
@@ -31,8 +32,11 @@ body {
 }
 
 .container {
-  padding-left: 5%;
+  height: 80%;
+  padding: 0 5%;
+  overflow-y: scroll;
   .row {
+    text-align: center;
     > span {
       display: inline-block;
       width: 10%;
