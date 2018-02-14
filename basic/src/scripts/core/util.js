@@ -48,12 +48,19 @@ const matrixToolkit = {
     // 当前行
     const row = matrix[rowIndex]
     // 当前列
-    const col = (new Array(9)).map((v, i) => matrix[i][colIndex])
+    // (new Array(9)).map 返回的仍然是empty * 9
+    const col = Array.from({length: 9}).map((v, i) => matrix[i][colIndex])
     // 宫序号
     const { boxIndex } = boxToolkit.convertToBoxIndex(rowIndex, colIndex)
     // 当前宫
     const box = boxToolkit.getBoxCells(matrix, boxIndex)
 
+    // 检查当前行，列，宫中都没有填写数字n
+    for (let i = 0; i < 9; i++) {
+      if (row[i] === n || col[i] === n || box[i] === n) {
+        return false
+      }
+    }
     return true
   }
 }
@@ -61,11 +68,19 @@ const matrixToolkit = {
 /**
  * 宫坐标系
  * 1. 行列坐标与宫坐标互转
- * 2. 
+ * 2. 取出某一宫的数据数组
  */
 const boxToolkit = {
   getBoxCells(matrix, boxIndex) {
-
+    const startRowIndex = Math.floor(boxIndex / 3) * 3
+    const startColIndex = boxIndex % 3 * 3
+    const result = []
+    for (let cellIndex = 0; cellIndex < 9; cellIndex++) {
+      const rowIndex = startRowIndex + Math.floor(cellIndex / 3)
+      const colIndex = startColIndex + cellIndex % 3
+      result.push(matrix[rowIndex][colIndex])
+    }
+    return result
   },
 
   convertToBoxIndex(rowIndex, colIndex) {
