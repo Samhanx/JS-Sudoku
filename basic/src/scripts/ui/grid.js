@@ -1,4 +1,5 @@
 import Util from '../core/util'
+import SudokuGenerator from '../core/generator'
 
 export default class Grid {
   constructor(container) {
@@ -6,7 +7,10 @@ export default class Grid {
   }
 
   build() {
-    const matrix = Util.matrix.createRandomMatrix()
+    const sudoku = new SudokuGenerator()
+    sudoku.generate()
+    // const matrix = Util.matrix.createRandomMatrix()
+    const matrix = sudoku.matrix
     const rowGroupClasses = ['row-group-top', 'row-group-middle', 'row-group-bottom']
     const colGroupClasses = ['col-group-left', 'col-group-center', 'col-group-right']
     

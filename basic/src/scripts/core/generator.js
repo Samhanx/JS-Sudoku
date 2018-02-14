@@ -1,18 +1,27 @@
 import Util from './util'
 
-export default class sudokuGenerator {
+export default class SudokuGenerator {
   generate() {
+    while (!this.internalGenerate()) {
+      console.log('Generate Failed. Try again.')
+    }
+  }
+
+  internalGenerate() {
     this.matrix = Util.matrix.createMatrix()
     this.randomMatrix = Util.matrix.createRandomMatrix()
 
     // 填写数字1-9
     for (let n = 1; n <= 9; n++) {
-      this.fillNumber(n)
+      if (!this.fillNumber(n)) {
+        return false
+      }
     }
+    return true
   }
 
   fillNumber(n) {
-    this.fillRow(n, 0)
+    return this.fillRow(n, 0)
   }
 
   fillRow(n, rowIndex) {
@@ -23,7 +32,7 @@ export default class sudokuGenerator {
 
     // 当前行
     const row = this.matrix[rowIndex]
-    // 当前行随机排列1-8
+    // 当前行随机排列0-8
     const randomArray = this.randomMatrix[rowIndex]
     for (let i = 0; i < 9; i++) {
       // 随机选一列
@@ -49,3 +58,7 @@ export default class sudokuGenerator {
     return false
   }
 }
+
+// const sudoku = new SudokuGenerator()
+// sudoku.generate()
+// console.log(sudoku.matrix)
